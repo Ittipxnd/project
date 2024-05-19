@@ -29,7 +29,7 @@ class MyButton extends StatelessWidget {
             textStyle: Theme.of(context).textTheme.titleLarge,
             fontSize: 20,
             fontWeight: FontWeight.w600,
-            color: Colors.white,
+            color: const Color.fromARGB(255, 110, 31, 31),
           ),
         )),
       ),

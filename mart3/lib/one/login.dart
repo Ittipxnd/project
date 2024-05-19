@@ -6,7 +6,6 @@ import 'package:mart3/option/button.dart';
 import 'package:mart3/option/mytext.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
   @override
@@ -51,16 +50,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () => Navigator.pop(context, 'Cancel'),
                 child: const Text('Cancel'),
               ),
-              // TextButton(
-              //   onPressed: () {
-              //     Navigator.push(
-              //       context,
-              //       MaterialPageRoute(
-              //           builder: (context) => const ToDoListScreen()),
-              //     );
-              //   },
-              //   child: const Text('OK'),
-              // ),
             ],
           ),
         );
@@ -71,187 +60,210 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 55, 163, 182),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-        child: Form(
-          child: Column(
-            children: [
-              const Spacer(),
-              Text(
-                "Hello ready to get started",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.poppins(
-                  textStyle: Theme.of(context).textTheme.displayLarge,
-                  color: const Color.fromARGB(255, 255, 255, 255),
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                  fontStyle: FontStyle.normal,
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                "Please sign-in with your email and password",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.poppins(
-                  textStyle: Theme.of(context).textTheme.displaySmall,
-                  color: const Color.fromARGB(255, 255, 255, 255),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w300,
-                  fontStyle: FontStyle.italic,
-                ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              MyTextField(
-                controller: emailController,
-                hintText: 'Enter your email',
-                obscureText: false,
-                labelText: 'Email',
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              MyTextField(
-                controller: passwordController,
-                hintText: 'Enter your password',
-                obscureText: true, //ปกปิดเป็นความลับ
-                labelText: 'Password',
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Forgot password?',
-                        style: GoogleFonts.lato(
-                          textStyle: Theme.of(context).textTheme.displaySmall,
-                          color: const Color.fromARGB(255, 255, 255, 255),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 25,
-              ),
-              MyButton(onTap: signInWithEmail, hintText: 'Sign In'),
-              const SizedBox(
-                height: 30,
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Expanded(
-                      child: Divider(
-                        thickness: 1.0,
-                        color: Color.fromARGB(255, 49, 56, 255),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                      child: Text(
-                        'or continue with',
-                        style: GoogleFonts.lato(
-                            textStyle: Theme.of(context).textTheme.displaySmall,
-                            fontSize: 16,
+      backgroundColor: const Color.fromARGB(255, 211, 211, 211),
+      body: Column(mainAxisSize: MainAxisSize.max, children: [
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: 
+            Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Sign In',
+                          style: GoogleFonts.poppins(
+                            textStyle: Theme.of(context).textTheme.displayLarge,
+                            color: const Color.fromARGB(255, 0, 0, 0),
+                            fontSize: 20,
                             fontWeight: FontWeight.w600,
                             fontStyle: FontStyle.normal,
-                            color: Color.fromARGB(255, 173, 254, 199)),
-                      ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Please sign-in with your email and password",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.poppins(
+                            textStyle: Theme.of(context).textTheme.displaySmall,
+                            color: const Color.fromARGB(255, 0, 0, 0),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        MyTextField(
+                          controller: emailController,
+                          hintText: 'Enter your email',
+                          obscureText: false,
+                          labelText: 'Email',
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        MyTextField(
+                          controller: passwordController,
+                          hintText: 'Enter your password',
+                          obscureText: true, //ปกปิดเป็นความลับ
+                          labelText: 'Password',
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              TextButton(
+                                onPressed: () {},
+                                child: Text(
+                                  'Forgot password?',
+                                  style: GoogleFonts.lato(
+                                    textStyle: Theme.of(context)
+                                        .textTheme
+                                        .displaySmall,
+                                    color: const Color.fromARGB(
+                                        255, 255, 255, 255),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.italic,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 25,
+                        ),
+                        MyButton(onTap: signInWithEmail, hintText: 'Sign In'),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Expanded(
+                                child: Divider(
+                                  thickness: 1.0,
+                                  color: Color.fromARGB(255, 246, 46, 46),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 15.0),
+                                child: Text(
+                                  'or continue with',
+                                  style: GoogleFonts.lato(
+                                      textStyle: Theme.of(context)
+                                          .textTheme
+                                          .displaySmall,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: FontStyle.normal,
+                                      color: const Color.fromARGB(
+                                          255, 1, 15, 209)),
+                                ),
+                              ),
+                              const Expanded(
+                                child: Divider(
+                                  thickness: 1.0,
+                                  color: Color.fromARGB(255, 246, 46, 46),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            MyIconButton(
+                              imagePath: 'assets/images/google.png',
+                              width: 50,
+                              height: 50,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            MyIconButton(
+                              imagePath: 'assets/images/apple.png',
+                              width: 50,
+                              height: 50,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Not a member?',
+                              style: GoogleFonts.lato(
+                                  textStyle:
+                                      Theme.of(context).textTheme.displayMedium,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FontStyle.italic,
+                                  color:
+                                      const Color.fromARGB(255, 243, 116, 255)),
+                            ),
+                            const SizedBox(
+                              height: 2,
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //     builder: (context) => SignUpScreen(),
+                                //   ),
+                                // );
+                              },
+                              child: Text(
+                                'Register now',
+                                style: GoogleFonts.lato(
+                                    textStyle: Theme.of(context)
+                                        .textTheme
+                                        .displayMedium,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    fontStyle: FontStyle.italic,
+                                    color: const Color.fromARGB(
+                                        255, 243, 80, 255)),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const Spacer(),
+                      ],
                     ),
-                    const Expanded(
-                      child: Divider(
-                        thickness: 1.0,
-                        color: Color.fromARGB(255, 49, 56, 255),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  MyIconButton(
-                    imagePath: 'assets/images/google.png',
-                    width: 50,
-                    height: 50,
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  MyIconButton(
-                    imagePath: 'assets/images/apple.png',
-                    width: 50,
-                    height: 50,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Not a member?',
-                    style: GoogleFonts.lato(
-                        textStyle: Theme.of(context).textTheme.displayMedium,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        fontStyle: FontStyle.italic,
-                        color: const Color.fromARGB(255, 173, 254, 199)),
-                  ),
-                  const SizedBox(
-                    height: 2,
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => SignUpScreen(),
-                      //   ),
-                      // );
-                    },
-                    child: Text(
-                      'Register now',
-                      style: GoogleFonts.lato(
-                          textStyle: Theme.of(context).textTheme.displayMedium,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          fontStyle: FontStyle.italic,
-                          color: Color.fromARGB(255, 80, 255, 136)),
-                    ),
-                  ),
-                ],
-              ),
-              const Spacer(),
-            ],
+                ]),
           ),
         ),
-      ),
+      ]),
     );
   }
 }
