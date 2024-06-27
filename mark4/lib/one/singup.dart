@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mark4/one/button.dart';
 import 'package:mark4/one/login.dart';
 import 'package:mark4/one/text.dart';
+
 
 
 // import 'package:onboarding_screen/component/my_button.dart';
@@ -101,36 +103,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             MyTextField(
               controller: nameController,
-              hintText: 'Enter your name',
               obscureText: false,
-              labelText: 'Name',
+              labelText: 'Name', hintText: '',
             ),
             const SizedBox(
               height: 20,
             ),
             MyTextField(
               controller: emailController,
-              hintText: 'Enter your email',
+             
               obscureText: false,
-              labelText: 'Email',
+              labelText: 'Email', hintText: '',
             ),
             const SizedBox(
               height: 20,
             ),
             MyTextField(
               controller: passwordController,
-              hintText: 'Enter your password',
+             
               obscureText: true,
-              labelText: 'Password',
+              labelText: 'Password', hintText: '',
             ),
             const SizedBox(
               height: 20,
             ),
             MyTextField(
               controller: re_passwordController,
-              hintText: 'Enter your password again',
+             
               obscureText: true,
-              labelText: 'Re-Password',
+              labelText: 'Re-Password', hintText: '',
             ),
             const SizedBox(
               height: 20,

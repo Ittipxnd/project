@@ -16,22 +16,28 @@ class MyButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(25.0),
-        margin: EdgeInsets.symmetric(horizontal: 25.0),
+        width: 150.0, // กำหนดความกว้างของปุ่ม
+        margin:
+            const EdgeInsets.symmetric(horizontal: 10.0), // ลดระยะห่างด้านซ้ายและขวา
         decoration: BoxDecoration(
-          color: Color.fromARGB(255, 220, 120, 185),
-          borderRadius: BorderRadius.circular(8.0),
+          color: const Color.fromARGB(255, 178, 244, 189),
+          borderRadius: BorderRadius.circular(50.0),
         ),
         child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+                vertical: 10.0), // ลด padding ด้านบนและด้านล่าง
             child: Text(
-          hintText,
-          style: GoogleFonts.poppins(
-            textStyle: Theme.of(context).textTheme.titleLarge,
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-            color: Colors.white,
+              hintText,
+              style: GoogleFonts.poppins(
+                textStyle: Theme.of(context).textTheme.titleLarge,
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+              ),
+            ),
           ),
-        )),
+        ),
       ),
     );
   }
