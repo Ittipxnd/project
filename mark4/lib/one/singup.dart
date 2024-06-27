@@ -1,19 +1,13 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mark4/one/button.dart';
+import 'package:mark4/one/home.dart';
 import 'package:mark4/one/login.dart';
 import 'package:mark4/one/text.dart';
-
-
-
-// import 'package:onboarding_screen/component/my_button.dart';
-// import 'package:onboarding_screen/component/my_textfield.dart';
-// import 'package:onboarding_screen/screen/home_screen.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUpScreen extends StatefulWidget {
-  SignUpScreen({Key? key}) : super(key: key);
+  const SignUpScreen({Key? key}) : super(key: key);
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
@@ -23,10 +17,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final re_passwordController = TextEditingController();
+  final rePasswordController = TextEditingController();
 
   signUpWithEmail() async {
-    //สร้าง email & password
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailController.text,
@@ -44,27 +37,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
     }
   }
 
-  // ignore: non_constant_identifier_names
-  void _showMyDialog(String txtMsg) async {
-    return showDialog(
+  void _showMyDialog(String txtMsg) {
+    showDialog(
       context: context,
       builder: (BuildContext context) {
-        return Expanded(
-          child: AlertDialog(
-            backgroundColor: Color.fromARGB(255, 255, 193, 235),
-            title: const Text('Created Successfully.'),
-            content: Text(txtMsg),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () => Navigator.pop(context, 'Cancel'),
-                child: const Text('Cancel'),
-              ),
-              TextButton(
-                onPressed: () => Navigator.pop(context, 'OK'),
-                child: const Text('OK'),
-              ),
-            ],
-          ),
+        return AlertDialog(
+          backgroundColor: Color.fromARGB(255, 255, 193, 235),
+          title: const Text('Created Successfully.'),
+          content: Text(txtMsg),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'Cancel'),
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context, 'OK');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Login()),
+                );
+              },
+              child: const Text('OK'),
+            ),
+          ],
         );
       },
     );
@@ -73,116 +69,130 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 55, 163, 182),
-      body: Form(
-        child: Column(
-          children: [
-            const Spacer(),
-            Text(
-              'Welcome to our community',
-              style: GoogleFonts.lato(
-                textStyle: Theme.of(context).textTheme.displayLarge,
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-                fontStyle: FontStyle.normal,
-                color: Color.fromARGB(255, 255, 255, 255),
-              ),
+      backgroundColor: Color.fromARGB(255, 164, 214, 255),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Center(
+          child: Container(
+            decoration: BoxDecoration(
+              color: Color.fromARGB(255, 206, 232, 255),
+              borderRadius: BorderRadius.circular(48),
             ),
-            Text(
-              '\n To get started, please provide your information to create an account. \n',
-              style: GoogleFonts.lato(
-                textStyle: Theme.of(context).textTheme.displayLarge,
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-                fontStyle: FontStyle.italic,
-                color: Color.fromARGB(255, 255, 255, 255),
-              ),
+            constraints: BoxConstraints(
+              maxWidth: 550,
+              minWidth: 400,
+              maxHeight: 700,
+              minHeight: 300,
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            MyTextField(
-              controller: nameController,
-              obscureText: false,
-              labelText: 'Name', hintText: '',
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            MyTextField(
-              controller: emailController,
-             
-              obscureText: false,
-              labelText: 'Email', hintText: '',
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            MyTextField(
-              controller: passwordController,
-             
-              obscureText: true,
-              labelText: 'Password', hintText: '',
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            MyTextField(
-              controller: re_passwordController,
-             
-              obscureText: true,
-              labelText: 'Re-Password', hintText: '',
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            MyButton(onTap: signUpWithEmail, hintText: 'Sign up'),
-            const SizedBox(
-              height: 30,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Have a member?',
-                  style: GoogleFonts.lato(
-                    textStyle: Theme.of(context).textTheme.displayLarge,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    fontStyle: FontStyle.italic,
-                    color: Color.fromARGB(255, 229, 168, 207),
-                  ),
-                ),
-                const SizedBox(
-                  height: 2,
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Login(),
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 5),
+                  Text(
+                    "Register",
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                        color: Color.fromARGB(255, 154, 163, 171),
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
                       ),
-                    );
-                  },
-                  child: Text(
-                    'Sign in.',
-                    style: GoogleFonts.lato(
-                      textStyle: Theme.of(context).textTheme.displayLarge,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      fontStyle: FontStyle.italic,
-                      color: Color.fromARGB(255, 255, 255, 255),
                     ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 5),
+                  MyTextField(
+                    controller: nameController,
+                    hintText: '',
+                    obscureText: false,
+                    labelText: 'Username',
+                  ),
+                  const SizedBox(height: 10),
+                  MyTextField(
+                    controller: emailController,
+                    hintText: '',
+                    obscureText: false,
+                    labelText: 'Email',
+                  ),
+                  const SizedBox(height: 10),
+                  MyTextField(
+                    controller: passwordController,
+                    hintText: '',
+                    obscureText: true,
+                    labelText: 'Password',
+                  ),
+                  const SizedBox(height: 10),
+                  MyTextField(
+                    controller: rePasswordController,
+                    hintText: '',
+                    obscureText: true,
+                    labelText: 'Re-Password',
+                  ),
+                  const SizedBox(height: 10),
+                  MyButton(
+                    onTap: () {
+                      signUpWithEmail();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Login()),
+                      );
+                    },
+                    hintText: 'Sign up',
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Or ',
+                        style: GoogleFonts.lato(
+                          textStyle: const TextStyle(
+                            color: Color.fromARGB(255, 154, 163, 171),
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 5),
+                         GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Home()),
+                          );
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Login with Google',
+                              style: GoogleFonts.lato(
+                                textStyle: const TextStyle(
+                                  color: Color.fromARGB(255, 5, 142, 255),
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FontStyle.normal,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            Image.asset(
+                              'assets/image/google_icon.png',
+                              width: 30,
+                              height: 30,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                 
+                ],
+              ),
             ),
-            const Spacer(),
-          ],
+          ),
         ),
       ),
     );
