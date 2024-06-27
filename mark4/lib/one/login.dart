@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mark4/one/button.dart';
+
+import 'package:mark4/one/text.dart';
+
+
+
 // import 'package:onboarding_screen/component/my_button.dart';
 // import 'package:onboarding_screen/component/my_textfield.dart';
 // import 'package:onboarding_screen/screen/icon_button.dart';
@@ -10,13 +15,13 @@ import 'package:google_fonts/google_fonts.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:onboarding_screen/screen/todolist_screen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class Login extends StatefulWidget {
+  const Login({super.key});
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<Login> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<Login> {
   //Text editting controller
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -54,16 +59,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () => Navigator.pop(context, 'Cancel'),
                 child: const Text('Cancel'),
               ),
-              TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ToDoListScreen()),
-                  );
-                },
-                child: const Text('OK'),
-              ),
+              // TextButton(
+                // onPressed: () {
+                //   Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => const ToDoListScreen()),
+                //   );
+                // },
+                // child: const Text('OK'),
+              // ),
             ],
           ),
         );
@@ -195,20 +200,18 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  MyIconButton(
-                    imagePath: 'assets/images/google.png',
-                    width: 50,
-                    height: 50,
-                  ),
+                 children: [
+              //     MyButton(
+              //       icon: Image.asset(
+              //         'assets/image/google.png',
+              //         width: 50,
+              //         height: 50,
+              //       ),
+              // ),
                   SizedBox(
                     width: 10,
                   ),
-                  MyIconButton(
-                    imagePath: 'assets/images/apple.png',
-                    width: 50,
-                    height: 50,
-                  ),
+                 
                 ],
               ),
               const SizedBox(
@@ -234,7 +237,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SignUpScreen(),
+                          builder: (context) => Login(),
                         ),
                       );
                     },
