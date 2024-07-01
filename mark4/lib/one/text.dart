@@ -26,7 +26,7 @@ class MyTextField extends StatelessWidget {
             child: Text(
               labelText,
               style: const TextStyle(
-                color: Colors.black, // สีของป้ายชื่อ
+                color: Color.fromARGB(255, 113, 116, 119), // สีของป้ายชื่อ
               ),
             ),
           ),
@@ -36,7 +36,8 @@ class MyTextField extends StatelessWidget {
             decoration: InputDecoration(
               hintText: hintText,
               hintStyle: const TextStyle(
-                color: Colors.grey, // สีของข้อความคำแนะนำ
+                color:
+                    Color.fromARGB(255, 113, 116, 119), // สีของข้อความคำแนะนำ
               ),
               floatingLabelBehavior: FloatingLabelBehavior.always,
               contentPadding:

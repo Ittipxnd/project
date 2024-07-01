@@ -79,10 +79,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
               borderRadius: BorderRadius.circular(48),
             ),
             constraints: BoxConstraints(
-              maxWidth: 550,
-              minWidth: 400,
-              maxHeight: 700,
-              minHeight: 300,
+              maxWidth: 550, // กว้าง
+              minWidth: 400, // กว้างขั้นต่ำ
+              maxHeight: 600, // สูงสุด
+              minHeight: 300, // สูงขั้นต่ำ
             ),
             child: Padding(
               padding: const EdgeInsets.all(20.0),
@@ -156,11 +156,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ),
                       const SizedBox(width: 5),
-                         GestureDetector(
+                      GestureDetector(
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Home()),
+                            MaterialPageRoute(builder: (context) => HomePage()),
                           );
                         },
                         child: Row(
@@ -172,8 +172,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 textStyle: const TextStyle(
                                   color: Color.fromARGB(255, 5, 142, 255),
                                   fontSize: 18,
-                                  fontWeight: FontWeight.w500,
-                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w600,
+                                  fontStyle: FontStyle.italic,
                                 ),
                               ),
                             ),
@@ -188,7 +188,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ],
                   ),
-                 
                 ],
               ),
             ),

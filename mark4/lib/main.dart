@@ -1,7 +1,6 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:mark4/firebase_options.dart';
-import 'package:mark4/one/home.dart';
 import 'package:mark4/one/singup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mark4/one/login.dart';
