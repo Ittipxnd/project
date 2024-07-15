@@ -10,118 +10,109 @@ class HomePage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Center(
-          child: Column(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 206, 232, 255),
-                  borderRadius: BorderRadius.circular(48),
-                ),
-                constraints: const BoxConstraints(
-                  maxWidth: 400,
-                  minWidth: 300,
-                  maxHeight: 300,
-                  minHeight: 300,
-                ),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-                  child: Column(
-                    children: [
-                      Text(
-                        'ข่าวสาร',
-                        style: TextStyle(
-                          fontSize: 24,
-                          color: Colors.black,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 206, 232, 255),
+                    borderRadius: BorderRadius.circular(48),
+                  ),
+                  constraints: const BoxConstraints(
+                    maxWidth: 400,
+                    minWidth: 300,
+                    maxHeight: 300,
+                    minHeight: 300,
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                    child: Column(
+                      children: [
+                        Text(
+                          'ข่าวสาร',
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.black,
+                          ),
                         ),
+                        SizedBox(height: 16),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                const Text(
+                  'หมวดหมู่ผลิตภัณฑ์',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.grey,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      ProductCard(
+                        imageUrl: 'https://via.placeholder.com/153',
+                        productName: 'Product 1',
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(width: 8),
+                      ProductCard(
+                        imageUrl: 'https://via.placeholder.com/153',
+                        productName: 'Product 2',
+                      ),
+                      const SizedBox(width: 8),
+                      ProductCard(
+                        imageUrl: 'https://via.placeholder.com/153',
+                        productName: 'Product 3',
+                      ),
                     ],
                   ),
                 ),
-              ),
-              const SizedBox(height: 16),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
-                    'หมวดหมู่ผลิตภัณฑ์',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey,
+                const SizedBox(height: 16),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      ProductCard(
+                        imageUrl: 'https://via.placeholder.com/153',
+                        productName: 'Product 4',
+                      ),
+                      const SizedBox(width: 8),
+                      ProductCard(
+                        imageUrl: 'https://via.placeholder.com/153',
+                        productName: 'Product 5',
+                      ),
+                      const SizedBox(width: 8),
+                      ProductCard(
+                        imageUrl: 'https://via.placeholder.com/153',
+                        productName: 'Product 6',
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Column(
+                  children: [
+                    ProductCard(
+                      imageUrl: 'https://via.placeholder.com/153',
+                      productName: 'Product 4',
                     ),
-                  ),
-                  SizedBox(height: 16),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    // child: Row(
-                    //   children: [
-                    //     // ปุ่มนำทางไปยังหน้า Shop
-                    //     TextButton(
-                    //       onPressed: () {
-                    //         Navigator.of(context).push(
-                    //           MaterialPageRoute(
-                    //               builder: (context) => ShopPage()),
-                    //         );
-                    //       },
-                    //       child: Image(
-                    //         image: AssetImage('assets/image/google_icon.png'),
-                    //         width: 30,
-                    //         height: 30,
-                    //       ),
-                    //     ),
-
-                    //     SizedBox(width: 8),
-                    //     // เพิ่มปุ่มเพิ่มเติมตามต้องการ
-                    //   ],
-                    // ),
-                  ),
-                  SizedBox(height: 16),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        ProductCard(
-                          imageUrl: 'https://via.placeholder.com/153',
-                          productName: 'Product 1',
-                        ),
-                        SizedBox(width: 8),
-                        ProductCard(
-                          imageUrl: 'https://via.placeholder.com/153',
-                          productName: 'Product 2',
-                        ),
-                        SizedBox(width: 8),
-                        ProductCard(
-                          imageUrl: 'https://via.placeholder.com/153',
-                          productName: 'Product 3',
-                        ),
-                      ],
+                    const SizedBox(height: 8),
+                    ProductCard(
+                      imageUrl: 'https://via.placeholder.com/153',
+                      productName: 'Product 5',
                     ),
-                  ),
-                  SizedBox(height: 16),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        ProductCard(
-                          imageUrl: 'https://via.placeholder.com/153',
-                          productName: 'Product 4',
-                        ),
-                        SizedBox(width: 8),
-                        ProductCard(
-                          imageUrl: 'https://via.placeholder.com/153',
-                          productName: 'Product 5',
-                        ),
-                        SizedBox(width: 8),
-                        ProductCard(
-                          imageUrl: 'https://via.placeholder.com/153',
-                          productName: 'Product 6',
-                        ),
-                      ],
+                    const SizedBox(height: 8),
+                    ProductCard(
+                      imageUrl: 'https://via.placeholder.com/153',
+                      productName: 'Product 6',
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

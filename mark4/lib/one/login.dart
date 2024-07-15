@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mark4/one/button.dart';
 import 'package:mark4/one/singup.dart';
 import 'package:mark4/one/text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'home.dart'; // Import หน้า Home
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _HomeScreenState();
+  State<Login> createState() => _LoginState();
 }
 
-class _HomeScreenState extends State<Login> {
+class _LoginState extends State<Login> {
   // Text editing controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -25,15 +26,16 @@ class _HomeScreenState extends State<Login> {
         email: emailController.text,
         password: passwordController.text,
       );
-      _showMyDialog("You can enjoy activities here.");
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
     } on FirebaseAuthException catch (e) {
       print('Failed with error code : ${e.code}');
       print(e.message);
 
-      if (e.code == 'invalid-email') {
-        _showMyDialog('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        _showMyDialog('Wrong password provided for that user.');
+      if (e.code == 'user-not-found' || e.code == 'wrong-password') {
+        _showMyDialog('Login ไม่ถูกต้อง');
       }
     }
   }
@@ -127,6 +129,7 @@ class _HomeScreenState extends State<Login> {
                     ],
                   ),
                   MyButton(onTap: signInWithEmail, hintText: 'Sign In'),
+                  const SizedBox(height: 10),
                   const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

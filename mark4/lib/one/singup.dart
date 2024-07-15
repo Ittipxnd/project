@@ -3,8 +3,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mark4/one/button.dart';
 import 'package:mark4/one/home.dart';
 import 'package:mark4/one/login.dart';
+
 import 'package:mark4/one/text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -29,14 +31,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
+        _showMyDialog('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
         print('The account already exists for that email.');
+        _showMyDialog('The account already exists for that email.');
       }
     } catch (e) {
       print(e);
     }
   }
 
+  
   void _showMyDialog(String txtMsg) {
     showDialog(
       context: context,
@@ -133,10 +138,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   MyButton(
                     onTap: () {
                       signUpWithEmail();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Login()),
-                      );
                     },
                     hintText: 'Sign up',
                   ),
@@ -157,12 +158,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       const SizedBox(width: 5),
                       GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => HomePage()),
-                          );
-                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
